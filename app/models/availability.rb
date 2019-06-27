@@ -22,6 +22,6 @@ class Availability < ActiveRecord::Base
   end
 
   def set_end_time
-    self.end_time = start_time + duration.to_i * 60
+    self.end_time = start_time + duration.to_i.minutes
   end
 end

@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title CoolCatsPairCoding
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "application", "http://fonts.googleapis.com/css?family=Roboto"
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.navbar-dark.bg-dark
+      a.navbar-brand CoolCatsPairCoding
+      - if user_signed_in?
+        = link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-secondary'
+      - else
+        = link_to "Login with Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-primary'
+    p.notice= notice
+    p.alert= alert
+    = yield

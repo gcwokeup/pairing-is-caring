@@ -6,7 +6,7 @@ class AvailabilitiesController < ApplicationController
   end
 
   def create
-    mentor = find_or_activate_by_email
+    mentor = current_user
     mentor.availabilities.create!(format_start_time(availability_params))
     redirect_to availabilities_path
   end
@@ -30,7 +30,7 @@ class AvailabilitiesController < ApplicationController
   private
 
   def availability_params
-    params.require(:availability).permit('start_time(1s)', 'start_time(4i)', 'start_time(5i)', :start_time, :duration, :timezone, :location)
+    params.require(:availability).permit('start_time(1s)', 'start_time(4i)', 'start_time(5i)', :start_time, :end_time, :duration, :timezone, :location)
   end
 
   def format_start_time(time_params)

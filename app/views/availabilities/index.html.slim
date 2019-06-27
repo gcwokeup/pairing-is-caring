@@ -4,14 +4,17 @@
     .panel
       p
         span.icon aria-hidden="true" data-icon="♥"
-        | There isn't currently any upcoming mentoring availibility. #{link_to "Offer to mentor someone!", new_availability_path}
+        | There isn't currently any upcoming mentoring availability. #{link_to "Offer to mentor someone!", new_availability_path}
   - @availabilities.each do |a|
     .panel
       p
         span.icon aria-hidden="true" data-icon="♥"
         = link_to_user(a.mentor)
-        | on #{display_availability(a)}
-        | \#{link_to "Sign up", new_appointment_request_path(:availability_id => a.id)}
+        | &nbsp
+        | is available on &nbsp
+        = display_availability(a)
+        = link_to "Sign up", new_appointment_request_path(:availability_id => a.id), class: "ml-2 btn btn-primary"
+
 #appointments
   - unless @appointments.empty?
     h2 Upcoming Mentoring Appointments
@@ -29,4 +32,4 @@
     - @featured.each do |user|
       p
         span.icon aria-hidden="true" data-icon="♥"
-        = link_to_user user
+        = link_to_user(user)

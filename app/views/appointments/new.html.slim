@@ -1,12 +1,12 @@
 h2 Sign up
 .panel
   p
-    | With #{link_to_user(@availability.mentor)} on #{display_availability(@availability)}
+    | With #{link_to user_path(@availability.mentor)} on #{display_availability(@availability)}
   = form_tag appointment_requests_path(:availability_id => @availability) do
     p
       | Name #{text_field_tag :first_name, params[:first_name]}#{text_field_tag :last_name, params[:last_name]}
     p
-      | Username #{text_field_tag :twitter_handle, params[:username]}
+      | Username #{text_field_tag :username, params[:username]}
     p
       | Email address #{text_field_tag :email, params[:email]}
     input type="submit" /
