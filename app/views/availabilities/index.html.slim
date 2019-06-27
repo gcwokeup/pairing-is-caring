@@ -1,0 +1,32 @@
+#availabilities
+  h2 Available Mentoring Opportunities
+  - if @availabilities.empty?
+    .panel
+      p
+        span.icon aria-hidden="true" data-icon="♥"
+        | There isn't currently any upcoming mentoring availibility. #{link_to "Offer to mentor someone!", new_availability_path}
+  - @availabilities.each do |a|
+    .panel
+      p
+        span.icon aria-hidden="true" data-icon="♥"
+        = link_to_user(a.mentor)
+        | on #{display_availability(a)}
+        | \#{link_to "Sign up", new_appointment_request_path(:availability_id => a.id)}
+#appointments
+  - unless @appointments.empty?
+    h2 Upcoming Mentoring Appointments
+  - @appointments.each do |a|
+    .panel
+      p
+        = link_to_user(a.mentor)
+        span.icon aria-hidden="true" data-icon="♥"
+        = link_to_user(a.mentee)
+      p
+        | in #{distance_of_time_in_words(Time.now, a.start_time)} at #{a.location}
+#featured_mentors
+  h2 Featured Mentors
+  .panel
+    - @featured.each do |user|
+      p
+        span.icon aria-hidden="true" data-icon="♥"
+        = link_to_user user

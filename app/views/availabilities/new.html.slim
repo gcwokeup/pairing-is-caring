@@ -1,0 +1,31 @@
+.container
+  .panel.row
+    .col-8.mx-auto
+      = form_tag availabilities_path do
+        .form-group
+          label Name
+          .row
+            .col
+              = text_field_tag :first_name,"", placeholder: "First name", class: "form-control"
+            .col
+              = text_field_tag :last_name,"", placeholder: "Last name", class: "form-control"
+        .form-group
+          label Username
+          = text_field_tag :twitter_handle,"", placeholder: "Username", class: "form-control"
+        .form-group
+          label Email address
+          = text_field_tag :email,"", placeholder: "abc@email.com", class: "form-control"
+        .form-group
+          label Date &amp; time available for mentoring
+          = text_field_tag 'availability[start_time_1s]', Date.current, :name => 'availability[start_time(1s)]'
+          = time_select :availability, :start_time, :ignore_date => true
+        .form-group
+          label Duration in minutes
+          = text_field :availability, :duration, placeholder: "60", class: "form-control"
+        .form-group
+          label.w-100 Timezone
+          = time_zone_select :availability, :timezone, ActiveSupport::TimeZone.us_zones, default: "Central Time (US & Canada)"
+        .form-group
+          label Location
+          = text_field :availability, :location, class: "form-control"
+        input#submit_availability.btn.btn-primary type="submit"

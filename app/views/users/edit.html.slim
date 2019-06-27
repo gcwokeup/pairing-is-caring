@@ -1,0 +1,19 @@
+- unless @availabilities.empty?
+  h2 My upcoming availability
+- @availabilities.each do |a|
+  .panel
+    p
+      | On #{display_availability(a)}
+      | \#{link_to "Delete!", availability_path(a), :method => :delete}
+- unless @menteeing_appointments.empty?
+  h2 My upcoming appointments with mentors
+- @menteeing_appointments.each do |a|
+  .panel
+    p
+      = display_appointment(a)
+- unless @mentoring_appointments.empty?
+  h2 My upcoming appointments with mentees
+- @mentoring_appointments.each do |a|
+  .panel
+    p
+      = display_appointment(a)

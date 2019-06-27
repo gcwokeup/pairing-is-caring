@@ -1,0 +1,10 @@
+Hi <%= @mentee.name %>!
+
+<%= @mentor.name %> has agreed to meet with you on <%= display_availability(@appointment) %>.
+
+<!--If you want to quickly learn more about <%#= @mentor.first_name %>, check out their Twitter profile: https://twitter.com/<%#= @mentor.username %>-->
+
+If you have any questions about the mentoring session, reach out to <%= @mentor.first_name %> at: <%= @mentor.email %>
+
+Enjoy!
+Dev Bootcamp
