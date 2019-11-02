@@ -39,7 +39,7 @@ gem 'font-awesome-rails'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Authentication
-gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'devise', '~> 4.7'
 gem 'omniauth-facebook', '~> 5.0'
 
 group :development, :test do
